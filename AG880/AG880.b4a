@@ -1,0 +1,414 @@
+﻿Build1=Default,b4a.example
+File1=ac_button_down.png
+File10=calculator_7_button_down.png
+File11=calculator_7_button_up.png
+File12=calculator_8_button_down.png
+File13=calculator_8_button_up.png
+File14=calculator_9_button_down.png
+File15=calculator_9_button_up.png
+File16=calculator_dv_button_down.png
+File17=calculator_dv_button_up.png
+File18=Cassiopeia Mac.ttf
+File19=cassiopeia.ttf
+File2=ac_button_up.png
+File20=display_bezel_v2.png
+File21=eq_button_down.png
+File22=eq_button_up.png
+File23=Layout.bal
+File24=melody_button.png
+File25=mg_button_down.png
+File26=mg_button_up.png
+File27=mm_button_down.png
+File28=mm_button_up.png
+File29=mp_button_down.png
+File3=button_7_up.png
+File30=mp_button_up.png
+File31=mr_button_down.png
+File32=mr_button_up.png
+File33=off_button.png
+File34=pl_button_down.png
+File35=pl_button_up.png
+File36=pt_button_down.png
+File37=pt_button_up.png
+File38=Upper_panel.png
+File39=Upper_panel_bottom.png
+File4=cal_button.png
+File40=Upper_panel_middle.png
+File41=zero_button_down.png
+File42=zero_button_up.png
+File5=Calc_bottom.png
+File6=calc_switch_gamecal.png
+File7=calc_switch_melody.png
+File8=calc_switch_off.png
+File9=Calc_top.png
+FileGroup1=Default Group
+FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
+FileGroup13=Default Group
+FileGroup14=Default Group
+FileGroup15=Default Group
+FileGroup16=Default Group
+FileGroup17=Default Group
+FileGroup18=Default Group
+FileGroup19=Default Group
+FileGroup2=Default Group
+FileGroup20=Default Group
+FileGroup21=Default Group
+FileGroup22=Default Group
+FileGroup23=Default Group
+FileGroup24=Default Group
+FileGroup25=Default Group
+FileGroup26=Default Group
+FileGroup27=Default Group
+FileGroup28=Default Group
+FileGroup29=Default Group
+FileGroup3=Default Group
+FileGroup30=Default Group
+FileGroup31=Default Group
+FileGroup32=Default Group
+FileGroup33=Default Group
+FileGroup34=Default Group
+FileGroup35=Default Group
+FileGroup36=Default Group
+FileGroup37=Default Group
+FileGroup38=Default Group
+FileGroup39=Default Group
+FileGroup4=Default Group
+FileGroup40=Default Group
+FileGroup41=Default Group
+FileGroup42=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+FileGroup9=Default Group
+Group=Default Group
+Library1=core
+Library2=xui
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
+Module1=Starter
+NumberOfFiles=42
+NumberOfLibraries=2
+NumberOfModules=1
+Version=10.5
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: AG880
+	#VersionCode: 1
+	#VersionName: beta
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+	Private xui As XUI
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+
+'Output related variables
+Public LCD As B4XView 'LCD is device name of the LCD rightmost 6 digits
+Public LCDleft As B4XView
+Public gameover As B4XView
+Public Display1 As String 'Display is the string that is written to LCD
+Public Display2 As String
+'-----------------------------------------------------------------
+Public UFO As Int
+Public testUFO As Int
+Public lives As Byte
+Public wave As Int
+Public player As Byte
+Public mode As Byte 'default to off state
+Public Inv As String
+Public enemy As String
+Public Score As Int
+Public Len As Int
+Public space As String
+Public Indx As Int
+Public Left As String
+Public Right As String
+Public i As Int
+Public Tone As Byte
+
+Public Accumulator As String 'String where we add numerical data to be evaluated
+Public Memory As Float
+
+'Define our key values here
+	Public MR As Boolean
+	Public MM As Boolean
+	Public MP As Boolean
+	
+	Public MG As Boolean
+	Public B7 As Boolean
+	Public B8 As Boolean
+	Public B9 As Boolean
+	Public DV As Boolean
+	
+	Public PC As Boolean
+	Public B4 As Boolean
+	Public B5 As Boolean
+	Public B4 As Boolean
+	Public MU As Boolean
+	
+	Public CL As Boolean
+	Public B1 As Boolean
+	Public B2 As Boolean
+	Public B3 As Boolean
+	Public MI As Boolean
+	
+	Public AC As Boolean
+	Public B0 As Boolean
+	Public PT As Boolean
+	Public EQ As Boolean
+	Public PL As Boolean
+
+	'define our keys here
+Public offbutton As Button
+Public melbutton As Button
+Public Calbutton As Button
+	
+Public MRbutton As Button
+Public MMbutton As Button
+Public MPbutton As Button
+
+Public MGbutton As Button
+Public Cal7 As Button
+Public Cal8 As Button
+Public Cal9 As Button
+Public DVbutton As Button
+
+Public PCbutton As Button
+Public Cal4button As Button
+Public Cal5button As Button
+Public Cal6button As Button
+Public MUbutton As Button
+
+Public CLbutton As Button
+Public Cal1button As Button
+Public Cal2button As Button
+Public Cal3button As Button
+Public MIbutton As Button 
+
+Public ACbutton As Button
+Public Zbutton As Button
+Public PTbutton As Button
+Public EQbutton As Button
+Public PLbutton As Button
+
+
+	Public PWRswitch As ImageView
+	Dim ImgS1, ImgS2, ImgS3 As ImageView
+
+
+	'LCD.SetColorAndBorder(65535, 0,0,0)
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	Activity.LoadLayout("Layout")
+	
+	ImgS1.Initialize("")
+	ImgS2.Initialize("")
+	ImgS3.Initialize("")
+	ImgS1.Bitmap = LoadBitmap(File.DirAssets, "Calc_switch_off.png")
+	ImgS2.Bitmap = LoadBitmap(File.DirAssets, "Calc_switch_melody.png")
+	ImgS3.Bitmap = LoadBitmap(File.DirAssets, "Calc_switch_gamecal.png")
+End Sub
+
+
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+
+
+Sub GameCal
+	If mode=3 Then
+	If MG = True Then 'Play game------------------
+	LCD.Text=Score
+	Sleep(2500)
+	LCD.Text="16 - 30"
+	Sleep(2500)
+		enemy=""
+		gameover.text=""
+		Len=0
+		player=0
+		'Game starts here
+		Score = 0	
+		
+		For lives = 1 To 3 'game starts with 3 lives
+		UFO=0
+		For wave = 1 To 36
+		testUFO=UFO/10
+		If (testUFO*10)=UFO And UFO<>0 Then 
+		enemy=enemy & Chr(58)
+		UFO=0
+		Else
+			If wave>30 Then
+			enemy =enemy & " " 'trailing spaces
+				Else
+				enemy=enemy & Chr(Rnd(1,10)+48)
+			End If
+		End If
+		
+		LCD.Text=enemy
+		LCDleft.Text=Chr(player+48) & Chr(lives+58)
+	Sleep(1500)
+	
+	Len=enemy.Length
+	If Len=6 Then 
+		player=0
+		
+		For i = 1 To 3 'flash the display 3 times with the score
+		LCD.Text = Score
+		Sleep (300)
+		LCD.Text="      "
+		Sleep (300)
+		Next
+		
+		Exit
+	End If
+	
+	Next
+	enemy=""
+	LCDleft.Text=""
+	player=0
+	Next
+	MG=False
+	LCD.Text=Score
+	gameover.Text="Game Over"
+	End If '---------------------------------------------
+	'If MG is False, then do calculate
+	'Code goes here or in Sub
+	
+	End If
+End Sub
+
+'Button clicks-----------------------
+Sub MRbutton_click
+		Accumulator = Accumulator & Memory
+		GameCal 'call GameCal to check mode and update the LCD if needed
+End Sub
+	
+Sub MMbutton_click
+		'thinking about this behavior	
+End Sub
+
+Sub MPbutton_click
+	'thinking about this behavior
+End Sub
+'Next row--------------------------
+Sub MGbutton_click'Toggle function
+	If MG = False Then
+		MG=True
+		GameCal
+		Return
+	End If
+	If MG = True Then
+		MG=False
+		Return
+	End If
+End Sub
+
+Sub Cal7_click
+	If mode = 3 And MG = False Then
+	Accumulator = Accumulator & "7"
+	LCD.Text=Accumulator
+	Tone=7
+	'LCD.Text="7" 'Accumulator
+	GameCal 'call GameCal to check mode and update the LCD if needed
+	End If
+End Sub
+
+Sub Cal8_click
+	If mode = 3 And MG = False Then
+	Accumulator = Accumulator & "8"
+	Tone="8"
+	LCD.Text=Accumulator
+	GameCal 'call GameCal to check mode and update the LCD if needed
+	End If
+End Sub
+
+Sub Cal9_click
+	If mode = 3 And MG = False Then
+	Accumulator = Accumulator & "9"
+	Tone=9
+	LCD.Text=Accumulator
+	GameCal 'call GameCal to check mode and update the LCD if needed
+	End If
+End Sub
+Sub PTbutton_click
+	PT = True
+	player = player +1
+	PT = False
+	If player = 11 Then player =0
+		
+	LCDleft.Text=Chr(player+48) & Chr(lives+58)
+	
+End Sub
+
+Sub EQbutton_click 'change this back to PLbutton_click
+	EQ = True
+	CheckEnemy
+	EQ = False
+End Sub
+
+
+Sub Offbutton_click
+	PWRswitch.Bitmap = ImgS1.Bitmap
+	mode=1
+	Accumulator=""
+	gameover.Text=""
+	LCDleft.Text=""
+	LCD.Text=""
+End Sub
+
+Sub Melbutton_click
+	PWRswitch.Bitmap = ImgS2.Bitmap
+	mode=2
+End Sub
+
+Sub Calbutton_click
+	PWRswitch.Bitmap = ImgS3.Bitmap
+	mode=3
+	LCD.Text="0"
+End Sub
+
+	
+Sub CheckEnemy
+	Indx=enemy.IndexOf(Chr(player+48))
+	If Indx =-1 Then Return 'not found
+		'Len=enemy.Length	
+	Left =	enemy.Substring2(0, Indx)
+	Right = enemy.SubString(Indx+1)
+	enemy = Left & Right
+	'gameover.Text="Pow! $Score" ' testing purposes, remove in final
+	'play sound
+	If player=10 And Indx>-1 Then
+		UFO=0
+		Score=Score+300 
+	Else
+	Score=Score+(10*(6-Indx))
+		UFO=UFO+player
+	End If
+	
+	Indx=-1		
+End Sub
+
+Sub Calculator
+	
+End Sub
